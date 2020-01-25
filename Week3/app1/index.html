@@ -15,6 +15,8 @@
 
         <h1 style="background-color: lightblue;">Sample Web Page</h1>
 
+        <h2>Date: <span id='current-date'></span></h2>
+
         <h2 class="section-heading">First Section</h2>
 
         <div id="first-section">
@@ -46,5 +48,8 @@
                 <a href="forms.html">Form Example</a>
             </span>
         </div>
+        <script>
+            document.getElementById('current-date').innerHTML = new Date().toDateString();
+        </script>
     </body>
 </html>
