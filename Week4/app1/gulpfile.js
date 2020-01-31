@@ -46,6 +46,4 @@ function watch_files() {
   watch('css/*.css', css);
 }
 
-// exports.js = js;
-// exports.css = css;
 exports.default = series(js, css, images, html, watch_files);
