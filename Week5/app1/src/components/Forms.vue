@@ -14,6 +14,14 @@
             </div>
 
             <div class="form-entry">
+                Birthdate:
+                <br/>
+                Month: <input id='birth-month' type="text" v-model="birthDay" size="2" maxlength="2"/>
+                Day: <input id='birth-day' type="text" v-model="birthMonth" size="2" maxlength="2"/>
+                Year: <input id='birth-year' type="text" v-model="birthYear" size="4" maxlength="4"/>
+            </div>
+
+            <div class="form-entry">
                 <input type="button" value="Register" v-on:click="submitRegistration()"/>
             </div>
 
@@ -22,6 +30,7 @@
 </template>
 
 <script>
+    import { getAge } from '../Modules/AgeCalculator';
     export default {
         name: 'Registration',
         methods: {
@@ -36,13 +45,17 @@
                     this.lastNameErrorVisibility = 'visible';
                     return;
                 }
-                alert('Submitting Registration');
+                let age = getAge(this.birthDay, this.birthMonth, this.birthYear);
+                alert('Submitting Registration with age: ' + age);
             }
         },
         data () {
             return {
                 firstName: '',
                 lastName: '',
+                birthDay: '',
+                birthMonth: '',
+                birthYear: '',
                 firstNameErrorVisibility: 'hidden',
                 lastNameErrorVisibility: 'hidden'
             }
