@@ -73,12 +73,4 @@
         padding: 10px;
         background-color: lightgray;
     }
-
-    .errorVisible {
-        visibility: visible;
-    }
-
-    .errorNotVisible {
-        visibility: hidden;
-    }
 </style>
