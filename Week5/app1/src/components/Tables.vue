@@ -9,7 +9,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="student in students">
+                <tr v-for="student in students" v-bind:key="student">
                     <td>{{ student.lastName }}</td>
                     <td>{{ student.firstName }}</td>
                 </tr>
