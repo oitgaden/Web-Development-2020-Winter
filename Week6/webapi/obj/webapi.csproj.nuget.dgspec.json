@@ -1,0 +1,74 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\classes\\oit\\WebDevelopment\\2020Winter\\github\\Web-Development-2020-Winter\\Week6\\webapi\\webapi.csproj": {}
+  },
+  "projects": {
+    "C:\\classes\\oit\\WebDevelopment\\2020Winter\\github\\Web-Development-2020-Winter\\Week6\\webapi\\webapi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\classes\\oit\\WebDevelopment\\2020Winter\\github\\Web-Development-2020-Winter\\Week6\\webapi\\webapi.csproj",
+        "projectName": "webapi",
+        "projectPath": "C:\\classes\\oit\\WebDevelopment\\2020Winter\\github\\Web-Development-2020-Winter\\Week6\\webapi\\webapi.csproj",
+        "packagesPath": "C:\\Users\\gerald\\.nuget\\packages\\",
+        "outputPath": "C:\\classes\\oit\\WebDevelopment\\2020Winter\\github\\Web-Development-2020-Winter\\Week6\\webapi\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\gerald\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0-rc4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
