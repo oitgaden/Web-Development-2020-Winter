@@ -10,16 +10,16 @@
         
         data () {
             return {
-                temperature: ''
+                temperature: '',
+                apiServer: process.env.VUE_APP_API_SERVER
             }
         },
 
         methods: {
             getTemperature: function() {
-                let temperatureApi = 'http://localhost:8081/api/weather/temperature/current';
-                // let temperatureApi = 'https://localhost:5001/api/weather/temperature/current';
+                let url = `http://${this.apiServer}/api/weather/temperature/current`;
 
-                Vue.axios.get(temperatureApi).then(
+                Vue.axios.get(url).then(
                     (response) => {
                         this.temperature = response.data.f;
                     },
