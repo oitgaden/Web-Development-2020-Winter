@@ -16,6 +16,4 @@ public class Product
 
     [Column("count")]
     public int Count {get; set;}
-
-    // public Manufacturer Manufacturer { get; set; }
 }
