@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Database;
 
 namespace webapi.Controllers
@@ -20,7 +19,8 @@ namespace webapi.Controllers
         [HttpGet]
         public ActionResult<List<Product>> GetAllProducts()
         {
-            return Ok(_dbContext.Product.Include(p => p.Manufacturer).ToList());
+            var result = _dbContext.Product.ToList();
+            return Ok(result);
         }
 
         [HttpGet("{productId}")]

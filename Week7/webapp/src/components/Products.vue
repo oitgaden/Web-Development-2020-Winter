@@ -155,8 +155,8 @@
 
                 Vue.axios.post(url, {
                     name: this.name,
-                    price: this.price,
-                    count: this.count
+                    price: parseFloat(this.price),
+                    count: parseInt(this.count)
                 }).then(
                     () => {
                         this.getProducts();
@@ -186,8 +186,8 @@
 
                 Vue.axios.put(url, {
                     name: this.name,
-                    price: this.price,
-                    count: this.count
+                    price: parseFloat(this.price),
+                    count: parseInt(this.count)
                 }).then(
                     () => {
                         this.getProducts();

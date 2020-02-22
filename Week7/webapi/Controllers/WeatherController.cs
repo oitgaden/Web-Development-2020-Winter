@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using Microsoft.Extensions.Configuration;
 
 namespace webapi.Controllers
@@ -29,7 +30,6 @@ namespace webapi.Controllers
 
         [HttpGet]
         [Route("temperature/current")]
-        //public async Task<ActionResult<CurrentTemperature>> GetCurrentTemperature()
         public ActionResult<CurrentTemperature> GetCurrentTemperature()
         {
             try
@@ -46,20 +46,18 @@ namespace webapi.Controllers
             }
         }
 
-        //internal async Task<CurrentTemperature> getCurrentTemperature()
         internal CurrentTemperature getCurrentTemperature()
         {
             var request = new HttpRequestMessage(HttpMethod.Get, _currentTemperatureRequest);
 
             var client = _clientFactory.CreateClient();
 
-            //var response = await client.SendAsync(request);
             var response = client.SendAsync(request).Result;
 
             if (response.IsSuccessStatusCode)
             {
-                //var currentWeather = await response.Content.ReadAsAsync<CurrentWeather>();
-                var currentWeather = response.Content.ReadAsAsync<CurrentWeather>().Result;
+                var responseStream = response.Content.ReadAsStreamAsync().Result;
+                var currentWeather = JsonSerializer.DeserializeAsync<CurrentWeather>(responseStream).Result;
                 
                 return new CurrentTemperature
                     {
@@ -74,13 +72,13 @@ namespace webapi.Controllers
         }
 
         internal class CurrentWeather {
-            public string temp_c {get; set;}
-            public string temp_f {get; set;}
+            public decimal temp_c {get; set;}
+            public decimal temp_f {get; set;}
         }
 
         public class CurrentTemperature {
-            public string F {get; set;}
-            public string C {get; set;}
+            public decimal F {get; set;}
+            public decimal C {get; set;}
         }
     }
 }
