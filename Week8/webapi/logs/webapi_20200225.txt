@@ -1,6 +1,0 @@
-INFO  25-27-2020 21:27:00 Microsoft.Hosting.Lifetime [1] - Now listening on: https://localhost:5001 
-INFO  25-27-2020 21:27:00 Microsoft.Hosting.Lifetime [1] - Now listening on: http://localhost:5000 
-INFO  25-27-2020 21:27:00 Microsoft.Hosting.Lifetime [1] - Application started. Press Ctrl+C to shut down. 
-INFO  25-27-2020 21:27:00 Microsoft.Hosting.Lifetime [1] - Hosting environment: Development 
-INFO  25-27-2020 21:27:00 Microsoft.Hosting.Lifetime [1] - Content root path: C:\classes\oit\WebDevelopment\2020Winter\github\Web-Development-2020-Winter\Week8\webapi 
-INFO  25-27-2020 21:27:11 Controllers.ProductService [4] - Found low inventory product: 2 

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using ProductBusinessRules;
 
 public class ProductService : IProductService
 {
@@ -15,11 +14,11 @@ public class ProductService : IProductService
 
     public List<ProductViewModel> GetAllProducts()
     {
-        var productDtos = new List<ProductViewModel>();
+        var productViewModels = new List<ProductViewModel>();
 
         foreach(var product in _productRespository.GetAllProducts())
         {
-            productDtos.Add(new ProductViewModel {
+            productViewModels.Add(new ProductViewModel {
                 ProductId = product.ProductId,
                 Name = product.Name,
                 Price = product.Price,
@@ -32,7 +31,7 @@ public class ProductService : IProductService
             }
         }
 
-        return productDtos;
+        return productViewModels;
     }
 
     public Product GetProductById(long productId)
