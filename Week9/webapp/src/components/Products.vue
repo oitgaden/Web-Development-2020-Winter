@@ -109,15 +109,20 @@
                 price: undefined,
                 count: undefined,
                 productUpdateId: undefined,
-                apiServer: process.env.VUE_APP_API_SERVER
+                apiUrl: `/api/product`
             }
         },
 
         methods: {
-            getProducts: function() {
-                let url = `http://${this.apiServer}/api/product`;
+            getProducts: async function() {
+                let url = `${this.apiUrl}`;
+                const token = await this.$auth.getTokenSilently();
 
-                Vue.axios.get(url).then(
+                await Vue.axios.get(url, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }).then(
                     (response) => {
                         this.products = response.data;
                     },
@@ -127,10 +132,15 @@
                 );
             },
 
-            getProduct: function(productId) {
-                let url = `http://${this.apiServer}/api/product/${productId}`;
+            getProduct: async function(productId) {
+                let url = `${this.apiUrl}/${productId}`;
+                const token = await this.$auth.getTokenSilently();
 
-                Vue.axios.get(url).then(
+                await Vue.axios.get(url, {
+                    headers:{
+                        Authorization: `Bearer ${token}`
+                    }
+                }).then(
                     (response) => {
                         this.name = response.data.name;
                         this.price = response.data.price;
@@ -150,14 +160,22 @@
                 this.operation = 'add';
             },
 
-            addProduct: function() {
-                let url = `http://${this.apiServer}/api/product`;
+            addProduct: async function() {
+                let url = `${this.apiUrl}`;
+                const token = await this.$auth.getTokenSilently();
 
-                Vue.axios.post(url, {
-                    name: this.name,
-                    price: parseFloat(this.price),
-                    count: parseInt(this.count)
-                }).then(
+                await Vue.axios.post(url,
+                    {
+                        name: this.name,
+                        price: parseFloat(this.price),
+                        count: parseInt(this.count)
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }
+                ).then(
                     () => {
                         this.getProducts();
                         this.operation = 'list';
@@ -181,14 +199,22 @@
                 this.operation = 'update';
             },
 
-            updateProduct: function() {
-                let url = `http://${this.apiServer}/api/product/${this.productUpdateId}`;
+            updateProduct: async function() {
+                let url = `${this.apiUrl}/${this.productUpdateId}`;
+                const token = await this.$auth.getTokenSilently();
 
-                Vue.axios.put(url, {
-                    name: this.name,
-                    price: parseFloat(this.price),
-                    count: parseInt(this.count)
-                }).then(
+                await Vue.axios.put(url, 
+                    {
+                        name: this.name,
+                        price: parseFloat(this.price),
+                        count: parseInt(this.count)
+                    },
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    },
+                ).then(
                     () => {
                         this.getProducts();
                         this.operation = 'list';
@@ -199,10 +225,15 @@
                 );
             },
 
-            deleteProduct: function(productId) {
-                let url = `http://${this.apiServer}/api/product/${productId}`;
+            deleteProduct: async function(productId) {
+                let url = `${this.apiUrl}/${productId}`;
+                const token = await this.$auth.getTokenSilently();
 
-                Vue.axios.delete(url).then(
+                await Vue.axios.delete(url, {
+                    headers:{
+                        Authorization: `Bearer ${token}`
+                    }
+                }).then(
                     () => {
                         this.getProducts();
                         this.operation = 'list';

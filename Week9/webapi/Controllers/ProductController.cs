@@ -19,6 +19,7 @@ namespace webapi.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult<List<Product>> GetAllProducts()
         {
             _logger.LogDebug("Getting all products");
@@ -27,6 +28,7 @@ namespace webapi.Controllers
         }
 
         [HttpGet("{productId}")]
+        [Authorize]
         public ActionResult<Product> GetProduct(int productId)
         {
             var product = _productService.GetProductById(productId);
@@ -39,6 +41,7 @@ namespace webapi.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult<Product> AddProduct(Product product)
         {
             _productService.AddProduct(product);
@@ -49,6 +52,7 @@ namespace webapi.Controllers
         }
 
         [HttpPut("{productId}")]
+        [Authorize]
         public ActionResult UpdateProduct(int productId, Product productUpdate)
         {
             productUpdate.ProductId = productId;
@@ -58,6 +62,7 @@ namespace webapi.Controllers
         }
 
         [HttpDelete("{productId}")]
+        [Authorize]
         public ActionResult DeleteProduct(int productId)
         {
             _productService.DeleteProduct(productId);
