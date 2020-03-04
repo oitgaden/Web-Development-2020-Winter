@@ -39,7 +39,6 @@ namespace webapi.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public ActionResult<Product> AddProduct(Product product)
         {
             _productService.AddProduct(product);
@@ -50,7 +49,6 @@ namespace webapi.Controllers
         }
 
         [HttpPut("{productId}")]
-        [Authorize]
         public ActionResult UpdateProduct(int productId, Product productUpdate)
         {
             productUpdate.ProductId = productId;
@@ -60,7 +58,6 @@ namespace webapi.Controllers
         }
 
         [HttpDelete("{productId}")]
-        [Authorize]
         public ActionResult DeleteProduct(int productId)
         {
             _productService.DeleteProduct(productId);

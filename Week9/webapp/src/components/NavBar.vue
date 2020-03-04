@@ -1,9 +1,15 @@
 <template>
     <div class="menu-bar">
-        <span class="menu-item" v-on:click='goToHome'>Home</span>
-        <span class="menu-item" v-on:click='goToRegistration'>Registration</span>
-        <span class="menu-item" v-on:click='goToProducts'>Products</span>
-        <span><Weather></Weather></span>
+      <div v-if="!$auth.loading">
+          <span v-if="$auth.isAuthenticated" class="menu-item" v-on:click='goToHome'>Home</span>
+          <span v-if="$auth.isAuthenticated" class="menu-item" v-on:click='goToRegistration'>Registration</span>
+          <span v-if="$auth.isAuthenticated" class="menu-item" v-on:click='goToProducts'>Products</span>
+          <!-- show login when not authenticated -->
+          <button v-if="!$auth.isAuthenticated" class="menu-item" @click="login">Login</button>
+          <span id="weather-info" class="menu-item" v-if="$auth.isAuthenticated"><Weather></Weather></span>
+          <!-- show logout when authenticated -->
+          <button v-if="$auth.isAuthenticated" class="menu-item" @click="logout">Logout</button>
+      </div>
     </div>
 </template>
 
@@ -22,6 +28,16 @@
       },
       goToProducts: function() {
         this.$router.push({ path: 'products' })
+      },
+      // Log the user in
+      login() {
+        this.$auth.loginWithRedirect();
+      },
+      // Log the user out
+      logout() {
+        this.$auth.logout({
+          returnTo: window.location.origin
+        });
       }
     }
   }
@@ -29,7 +45,7 @@
 
 <style scoped>
     .menu-item {
-        margin-right: 10px;
+        margin-left: 10px;
         padding: 5px;
     }
 
@@ -40,5 +56,9 @@
         vertical-align: middle;
         padding-top: 20px;
         width: 50%;
+    }
+
+    #weather-info {
+      background-color: yellow;
     }
 </style>
