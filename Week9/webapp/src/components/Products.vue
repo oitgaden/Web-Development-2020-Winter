@@ -116,11 +116,11 @@
         methods: {
             getProducts: async function() {
                 let url = `${this.apiUrl}`;
-                const token = await this.$auth.getTokenSilently();
+                const jwtToken  = await this.$auth.getTokenSilently();
 
                 await Vue.axios.get(url, {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${jwtToken}`
                     }
                 }).then(
                     (response) => {
@@ -134,11 +134,11 @@
 
             getProduct: async function(productId) {
                 let url = `${this.apiUrl}/${productId}`;
-                const token = await this.$auth.getTokenSilently();
+                const jwtToken = await this.$auth.getTokenSilently();
 
                 await Vue.axios.get(url, {
                     headers:{
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${jwtToken}`
                     }
                 }).then(
                     (response) => {
@@ -162,7 +162,7 @@
 
             addProduct: async function() {
                 let url = `${this.apiUrl}`;
-                const token = await this.$auth.getTokenSilently();
+                const jwtToken = await this.$auth.getTokenSilently();
 
                 await Vue.axios.post(url,
                     {
@@ -172,7 +172,7 @@
                     },
                     {
                         headers: {
-                            Authorization: `Bearer ${token}`
+                            Authorization: `Bearer ${jwtToken}`
                         }
                     }
                 ).then(
@@ -201,7 +201,7 @@
 
             updateProduct: async function() {
                 let url = `${this.apiUrl}/${this.productUpdateId}`;
-                const token = await this.$auth.getTokenSilently();
+                const jwtToken = await this.$auth.getTokenSilently();
 
                 await Vue.axios.put(url, 
                     {
@@ -211,7 +211,7 @@
                     },
                     {
                         headers: {
-                            Authorization: `Bearer ${token}`
+                            Authorization: `Bearer ${jwtToken}`
                         }
                     },
                 ).then(
@@ -227,11 +227,11 @@
 
             deleteProduct: async function(productId) {
                 let url = `${this.apiUrl}/${productId}`;
-                const token = await this.$auth.getTokenSilently();
+                const jwtToken = await this.$auth.getTokenSilently();
 
                 await Vue.axios.delete(url, {
                     headers:{
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${jwtToken}`
                     }
                 }).then(
                     () => {
